@@ -9,8 +9,7 @@ You can start Xia locally by running:
 
     ./bin/hubot -a shell -n xia
 
-Then you can talk to Xia via terminal.
-
+Then you can talk to Xia via terminal:
 
 ```shell
 ➜  glip-hubot-xia git:(master) ./bin/hubot -a shell -n xia

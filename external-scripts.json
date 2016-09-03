@@ -4,5 +4,7 @@
   "hubot-maps",
   "hubot-rules",
   "hubot-scripts-stock",
-  "hubot-sushiyuki"
+  "hubot-sushiyuki",
+  "hubot-cron",
+  "hubot-redis-brain"
 ]
