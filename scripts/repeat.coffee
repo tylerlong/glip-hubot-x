@@ -1,6 +1,9 @@
 # Description:
 #   Example scripts for you to examine and try out.
 #
+# Commands:
+#   hubot repeat "<str>" <n> times - Repeat <str> <n> times
+#
 # Notes:
 #   They are commented out by default, because most of them are pretty silly and
 #   wouldn't be useful and amusing enough for day to day huboting.
@@ -9,6 +12,8 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
+  robot.respond /repeat\s+["“”]([^"“”]+)["“”]\s+(\d+)\s+times\s*$/i, (res) ->
+    res.send res.match[1].repeat(res.match[2])
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
