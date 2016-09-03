@@ -1,10 +1,7 @@
 [
-  "hubot-diagnostics",
   "hubot-help",
   "hubot-maps",
-  "hubot-rules",
   "hubot-scripts-stock",
-  "hubot-sushiyuki",
   "hubot-cron",
   "hubot-redis-brain"
 ]

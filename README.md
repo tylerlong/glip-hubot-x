@@ -11,7 +11,7 @@ You can start X locally by running:
 
 Then you can talk to X via terminal:
 
-```shell
+```
 ➜  glip-hubot-x git:(master) ./bin/hubot -a shell -n x
 x> x help
 x> Shell: x adapter - Reply with the adapter
