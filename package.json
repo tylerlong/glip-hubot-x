@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "coffee-script": "^1.10.0",
+    "cron": "^1.1.0",
     "hubot": "^2.19.0",
     "hubot-glip": "^0.1.0",
     "hubot-help": "^0.2.0",
