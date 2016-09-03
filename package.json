@@ -1,11 +1,11 @@
 {
-  "name": "glip-hubot-xia",
+  "name": "glip-hubot-x",
   "version": "0.1.0",
   "private": true,
   "author": "Tyler Long <tyler4long@gmail.com>",
-  "description": "Xia (厦) is a Glip bot for RingCentral Xiamen",
+  "description": "X (厦) is a Glip bot for RingCentral Xiamen",
   "scripts": {
-    "start": "hubot -a glip -n xia"
+    "start": "hubot -a glip -n x"
   },
   "dependencies": {
     "coffee-script": "^1.10.0",
