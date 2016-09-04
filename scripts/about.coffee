@@ -1,8 +1,8 @@
 # Description:
-#   Script to repeat a string several times.
+#   About X (厦)
 #
 # Commands:
-#   hubot repeat "<str>" <n> times - Repeat <str> <n> times
+#   hubot about - about X (厦)
 #
 # Notes:
 #   They are commented out by default, because most of them are pretty silly and
@@ -12,8 +12,10 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-  robot.respond /repeat\s+["“”]([^"“”]+)["“”]\s+(\d+)\s+times\s*$/i, (res) ->
-    res.send res.match[1].repeat(res.match[2])
+  robot.respond /about$/i, (res) ->
+    res.send """[X (厦)](https://github.com/tylerlong/glip-hubot-x) is a Glip bot for RingCentral Xiamen.
+It's created and maintained by [Tyler Long](https://github.com/tylerlong).
+It's built upon [Hubot](https://hubot.github.com/) and hosted by [IBM Bluemix](https://new-console.ng.bluemix.net/)."""
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
