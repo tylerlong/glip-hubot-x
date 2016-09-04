@@ -1,28 +1,23 @@
 # Description:
-#   register cron jobs to schedule messages on the current channel
+#   Register cron jobs to schedule messages on the current channel
 #
 # Commands:
-#   hubot new job <crontab format> say <message> - Schedule a cron job to say something
-#   hubot list jobs - List cron jobs
-#   hubot remove job <id> - remove a cron job
+#   hubot cron add <crontab format> say <message> - Schedule a cron job to say something
+#   hubot cron ls - List cron jobs
+#   hubot cron rm <id> - remove a cron job
 #
 # Author:
-#   miyagawa
+#   Tyler Long
 
 cronJob = require('cron').CronJob
 
 JOBS = {}
 
 createNewJob = (robot, pattern, user, message) ->
-  id = Math.floor(Math.random() * 1000000) while !id? || JOBS[id]
+  id = Math.floor(Math.random() * 100000) while !id? || JOBS[id]
   job = registerNewJob robot, id, pattern, user, message
   robot.brain.data.cronjob[id] = job.serialize()
   id
-
-registerNewJobFromBrain = (robot, id, pattern, user, message, timezone) ->
-  # for jobs saved in v0.2.0..v0.2.2
-  user = user.user if "user" of user
-  registerNewJob(robot, id, pattern, user, message, timezone)
 
 storeJobToBrain = (robot, id, job) ->
   robot.brain.data.cronjob[id] = job.serialize()
@@ -53,7 +48,7 @@ handleNewJob = (robot, msg, pattern, message) ->
 syncJobs = (robot) ->
   nonCachedJobs = difference(robot.brain.data.cronjob, JOBS)
   for own id, job of nonCachedJobs
-    registerNewJobFromBrain robot, id, job...
+    registerNewJob robot, id, job...
 
   nonStoredJobs = difference(JOBS, robot.brain.data.cronjob)
   for own id, job of nonStoredJobs
@@ -70,10 +65,10 @@ module.exports = (robot) ->
   robot.brain.on 'loaded', =>
     syncJobs robot
 
-  robot.respond /(?:new|add) job (.+?) say (.+?)$/i, (msg) ->
+  robot.respond /cron (?:add|new) (.+?) say (.+?)$/i, (msg) ->
     handleNewJob robot, msg, msg.match[1], msg.match[2]
 
-  robot.respond /(?:list|ls) jobs?$/i, (msg) ->
+  robot.respond /cron (?:ls|list)$/i, (msg) ->
     text = ''
     for id, job of JOBS
       room = job.user.reply_to || job.user.room
@@ -82,7 +77,7 @@ module.exports = (robot) ->
     text = 'None' if text.length == 0
     msg.send text
 
-  robot.respond /(?:rm|remove|del|delete) job (\d+)$/i, (msg) ->
+  robot.respond /cron (?:rm|remove|del|delete) (\d+)$/i, (msg) ->
     if (id = msg.match[1]) and unregisterJob(robot, id)
       msg.send "Job #{id} deleted"
     else
@@ -93,10 +88,7 @@ class Job
   constructor: (id, pattern, user, message, timezone) ->
     @id = id
     @pattern = pattern
-    # cloning user because adapter may touch it later
-    clonedUser = {}
-    clonedUser[k] = v for k,v of user
-    @user = clonedUser
+    @user = user
     @message = message
     @timezone = timezone
 
