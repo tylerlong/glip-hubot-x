@@ -26,3 +26,8 @@ x repeat "<str>" <n> times - Repeat <str> <n> times
 x stock <ticker> - Get a stock price
 x stock chart <ticker> [1d|5d|2w|1mon|1y] - Get a stock price and chart
 ```
+
+
+## todo
+
+- Rewrite hubot-cron, make it user friendly
