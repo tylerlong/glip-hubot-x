@@ -2,7 +2,7 @@
 #   Script to repeat a string several times.
 #
 # Commands:
-#   hubot repeat "<str>" <n> times - Repeat <str> <n> times
+#   hubot repeat <str> <n> times - Repeat <str> <n> times
 #
 # Notes:
 #   They are commented out by default, because most of them are pretty silly and
@@ -12,7 +12,7 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-  robot.respond /repeat\s+["“”]([^"“”]+)["“”]\s+(\d+)\s+times\s*$/i, (res) ->
+  robot.respond /repeat (.+?) (\d+) times$/i, (res) ->
     res.send res.match[1].repeat(res.match[2])
 
   # robot.hear /badger/i, (res) ->

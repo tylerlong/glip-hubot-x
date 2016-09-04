@@ -4,7 +4,7 @@
 # Commands:
 #   hubot cron add <crontab format> say <message> - Schedule a cron job to say something
 #   hubot cron ls - List cron jobs
-#   hubot cron rm <id> - remove a cron job
+#   hubot cron rm <id> - Remove a cron job
 #
 # Author:
 #   Tyler Long
