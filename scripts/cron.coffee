@@ -26,7 +26,6 @@ registerNewJobFromBrain = (robot, id, pattern, user, message, timezone) ->
 
 storeJobToBrain = (robot, id, job) ->
   robot.brain.data.cronjob[id] = job.serialize()
-
   envelope = user: job.user, room: job.user.room
   robot.send envelope, "Job #{id} stored in brain asynchronously"
 
@@ -51,15 +50,6 @@ handleNewJob = (robot, msg, pattern, message) ->
   catch error
     msg.send "Error caught parsing crontab pattern: #{error}. See http://crontab.org/ for the syntax"
 
-# updateJobTimezone = (robot, id, timezone) ->
-#   if JOBS[id]
-#     JOBS[id].stop()
-#     JOBS[id].timezone = timezone
-#     robot.brain.data.cronjob[id] = JOBS[id].serialize()
-#     JOBS[id].start(robot)
-#     return yes
-#   no
-
 syncJobs = (robot) ->
   nonCachedJobs = difference(robot.brain.data.cronjob, JOBS)
   for own id, job of nonCachedJobs
@@ -80,43 +70,24 @@ module.exports = (robot) ->
   robot.brain.on 'loaded', =>
     syncJobs robot
 
-  # robot.respond /(?:new|add) job "(.*?)" (.*)$/i, (msg) ->
-  #   handleNewJob robot, msg, msg.match[1], msg.match[2]
-
-  # robot.respond /(?:new|add) job (.*) "(.*?)" *$/i, (msg) ->
-  #   handleNewJob robot, msg, msg.match[1], msg.match[2]
-
-  robot.respond /(?:new|add) job (.*?) say (.*?) *$/i, (msg) ->
+  robot.respond /(?:new|add) job (.+?) say (.+?)$/i, (msg) ->
     handleNewJob robot, msg, msg.match[1], msg.match[2]
 
-  robot.respond /(?:list|ls) jobs?/i, (msg) ->
+  robot.respond /(?:list|ls) jobs?$/i, (msg) ->
     text = ''
     for id, job of JOBS
       room = job.user.reply_to || job.user.room
       if room == msg.message.user.reply_to or room == msg.message.user.room
-        text += "#{id}: #{job.pattern} @#{room} \"#{job.message}\"\n"
-    text = robot.adapter.removeFormatting text if robot.adapterName == 'slack'
+        text += "#{id}: #{job.pattern} \"#{job.message}\"\n"
     text = 'None' if text.length == 0
     msg.send text
 
-  robot.respond /(?:rm|remove|del|delete) job (\d+)/i, (msg) ->
+  robot.respond /(?:rm|remove|del|delete) job (\d+)$/i, (msg) ->
     if (id = msg.match[1]) and unregisterJob(robot, id)
       msg.send "Job #{id} deleted"
     else
       msg.send "Job #{id} does not exist"
 
-  # robot.respond /(?:rm|remove|del|delete) job with message (.+)/i, (msg) ->
-  #   message = msg.match[1]
-  #   for id, job of JOBS
-  #     room = job.user.reply_to || job.user.room
-  #     if (room == msg.message.user.reply_to or room == msg.message.user.room) and job.message == message and unregisterJob(robot, id)
-  #       msg.send "Job #{id} deleted"
-
-  # robot.respond /(?:tz|timezone) job (\d+) (.*)/i, (msg) ->
-  #   if (id = msg.match[1]) and (timezone = msg.match[2]) and updateJobTimezone(robot, id, timezone)
-  #     msg.send "Job #{id} updated to use #{timezone}"
-  #   else
-  #     msg.send "Job #{id} does not exist"
 
 class Job
   constructor: (id, pattern, user, message, timezone) ->
