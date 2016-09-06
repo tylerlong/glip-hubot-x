@@ -29,5 +29,5 @@ x stock chart <ticker> [1d|5d|2w|1mon|1y] - Get a stock price and chart
 ## todo
 
 - Test cron jobs
-    - 加上日期的话，就不好使了。
-- 如果是一对一私聊，不明白的指令，要提示用户不理解，并打印 help 信息
+    - It doesn't work with date
+- if one-one chat, print help if don't understand user's input. Just like the terminal.

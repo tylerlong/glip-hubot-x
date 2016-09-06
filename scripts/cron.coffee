@@ -67,7 +67,6 @@ module.exports = (robot) ->
     syncJobs robot
 
   robot.respond /time$/i, (msg) ->
-    msg.send "Server time is: #{new Date()}"
     msg.send "Server time is: #{moment().tz("Asia/Shanghai").format()} (Asia/Shanghai timezone)"
 
   robot.respond /cron (?:add|new) (.+?) say (.+?)$/i, (msg) ->
