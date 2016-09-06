@@ -28,6 +28,4 @@ x stock chart <ticker> [1d|5d|2w|1mon|1y] - Get a stock price and chart
 
 ## todo
 
-- Test cron jobs
-    - It doesn't work with date
 - if one-one chat, print help if don't understand user's input. Just like the terminal.

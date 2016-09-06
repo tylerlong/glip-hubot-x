@@ -11,8 +11,12 @@
 
 cronJob = require('cron').CronJob
 moment = require('moment-timezone')
+CronConverter = require('cron-converter')
 
 JOBS = {}
+cronConverter = new CronConverter({
+  outputMonthNames: true
+})
 
 createNewJob = (robot, pattern, user, message) ->
   id = Math.floor(Math.random() * 100000) while !id? || JOBS[id]
@@ -70,7 +74,11 @@ module.exports = (robot) ->
     msg.send "Server time is: #{moment().tz("Asia/Shanghai").format()} (Asia/Shanghai timezone)"
 
   robot.respond /cron (?:add|new) (.+?) say (.+?)$/i, (msg) ->
-    handleNewJob robot, msg, msg.match[1], msg.match[2]
+    try
+      pattern = cronConverter.fromString(msg.match[1]).toString()
+      handleNewJob robot, msg, pattern, msg.match[2]
+    catch error
+      msg.send "Crontab pattern invalid. See http://crontab.org/ for the syntax"
 
   robot.respond /cron (?:ls|list)$/i, (msg) ->
     text = ''
