@@ -15,7 +15,8 @@ CronConverter = require('cron-converter')
 
 JOBS = {}
 cronConverter = new CronConverter({
-  outputMonthNames: true
+  outputMonthNames: true,
+  outputWeekdayNames: true,
 })
 
 createNewJob = (robot, pattern, user, message) ->
