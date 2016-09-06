@@ -78,7 +78,7 @@ module.exports = (robot) ->
       pattern = cronConverter.fromString(msg.match[1]).toString()
       handleNewJob robot, msg, pattern, msg.match[2]
     catch error
-      msg.send "Crontab pattern invalid. See http://crontab.org/ for the syntax"
+      msg.send "Crontab pattern invalid: #{error}"
 
   robot.respond /cron (?:ls|list)$/i, (msg) ->
     text = ''
