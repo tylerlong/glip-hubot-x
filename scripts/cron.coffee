@@ -10,7 +10,7 @@
 #   Tyler Long
 
 cronJob = require('cron').CronJob
-moment = require('moment-timezone')
+# moment = require('moment-timezone')
 
 JOBS = {}
 
@@ -68,7 +68,7 @@ module.exports = (robot) ->
 
   robot.respond /time$/i, (msg) ->
     msg.send "Server time is: #{new Date()}"
-    msg.send "Server time is: #{moment().tz("Asia/Shanghai").format()} (Asia/Shanghai timezone)"
+    # msg.send "Server time is: #{moment().tz("Asia/Shanghai").format()} (Asia/Shanghai timezone)"
 
   robot.respond /cron (?:add|new) (.+?) say (.+?)$/i, (msg) ->
     handleNewJob robot, msg, msg.match[1], msg.match[2]
