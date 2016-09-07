@@ -15,8 +15,9 @@ imgUrlExpression = /\b(?:png|jpg|jpeg|gif)\b/i
 module.exports = (robot) ->
   robot.hear urlExpression, (res) ->
     for url in res.match
-      if url.match(imgUrlExpression) != null
-        res.send url
+      if url.match(imgUrlExpression) != null # image url found
+        envelope = { user: res.message.user, message_type: 'image_url' }
+        robot.send envelope, url
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
