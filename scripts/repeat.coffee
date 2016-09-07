@@ -12,7 +12,7 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-  robot.respond /repeat (.+?) (\d+) times$/i, (res) ->
+  robot.respond /repeat ([\s\S]+?) (\d+) times$/i, (res) ->
     res.send res.match[1].repeat(res.match[2])
 
   # robot.hear /badger/i, (res) ->
