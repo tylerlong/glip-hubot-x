@@ -16,8 +16,9 @@ module.exports = (robot) ->
   robot.hear urlExpression, (res) ->
     for url in res.match
       if url.match(imgUrlExpression) != null # image url found
-        envelope = { user: res.message.user, message_type: 'image_url' }
-        robot.send envelope, url
+        if !url.endsWith('#.png') # doesn't support http://chart.finance.yahoo.com/z?s=rng&t=1d&q=l&l=on&z=l&a=v&p=s&lang=en-US&region=US#.png
+          envelope = { user: res.message.user, message_type: 'image_url' }
+          robot.send envelope, url
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
