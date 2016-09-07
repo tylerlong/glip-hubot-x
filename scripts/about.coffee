@@ -13,9 +13,9 @@
 
 module.exports = (robot) ->
   robot.respond /about$/i, (res) ->
-    res.send """[X (厦)](https://github.com/tylerlong/glip-hubot-x) is a Glip bot for RingCentral Xiamen.
-It's created and maintained by [Tyler Long](https://github.com/tylerlong).
-It's built upon [Hubot](https://hubot.github.com/) and hosted by [IBM Bluemix](https://new-console.ng.bluemix.net/)."""
+    res.send """I'm [X (厦)](https://github.com/tylerlong/glip-hubot-x), a Glip bot for RingCentral Xiamen.
+I'm created and maintained by [Tyler Long](https://github.com/tylerlong).
+I'm built upon [Hubot](https://hubot.github.com/) and hosted by [IBM Bluemix](https://new-console.ng.bluemix.net/)."""
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
