@@ -54,20 +54,25 @@ title = (numbers) =>
     return '秀才 (一秀)'
   return '平民'
 
-
-module.exports = (robot) ->
-  robot.respond /bb$/i, (res) ->
-    numbers = [getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6)]
-    numbers.sort compare
-    result = numbers.map((i) =>
-      ":dice_#{i}:"
-    ).join(' ')
-    res.send "#{result}"
+bobing = (res) ->
+  numbers = [getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6)]
+  numbers.sort compare
+  result = numbers.map((i) =>
+    ":dice_#{i}:"
+  ).join(' ')
+  res.send "#{result}"
+  yourTitle = title(numbers)
+  if yourTitle != '平民'
     setTimeout(
       =>
-       res.send "您中了：#{title(numbers)} ！"
+      res.send "您中了：#{yourTitle} ！"
       100
     )
+
+module.exports = (robot) ->
+  robot.respond /bb$/i, bobing
+
+  robot.hear /博饼/, bobing
 
   robot.respond /bb rules$/i, (res) ->
     res.send """名称	个数	说明
