@@ -66,7 +66,7 @@ bobing = (res) ->
     setTimeout(
       =>
       res.send "您中了：#{yourTitle} ！"
-      100
+      256
     )
 
 module.exports = (robot) ->
