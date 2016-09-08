@@ -16,21 +16,58 @@
 getRandomInt = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min
 
+compare = (a, b) =>
+  if a == b
+    return 0
+  if a == 4
+    return -1
+  if b == 4
+    return 1
+  return a > b ? 1 : -1
+
+title = (numbers) =>
+  if numbers.length != 6
+    return '外星人'
+  dict = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 }
+  for i in numbers
+    dict[i] += 1
+  if dict[4] >= 4
+    return '状元'
+  for i in [1,2,3,5,6]
+    if dict[i] >= 5
+      return '状元'
+  b = true
+  for i in [1,2,3,4,5,6]
+    if dict[i] != 1
+      b = false
+      break
+  if b
+    return '榜眼 (对堂)'
+  if dict[4] == 3
+    return '探花 (三红)'
+  for i in [1,2,3,5,6]
+    if dict[i] == 4
+      return '进士 (四进)'
+  if dict[4] == 2
+    return '举人 (二举)'
+  if dict[4] == 1
+    return '秀才 (一秀)'
+  return '平民'
+
+
 module.exports = (robot) ->
   robot.respond /bb$/i, (res) ->
     numbers = [getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6)]
-    numbers.sort (a, b) =>
-      if a == b
-        return 0
-      if a == 4
-        return -1
-      if b == 4
-        return 1
-      return a > b ? 1 : -1
+    numbers.sort compare
     result = numbers.map((i) =>
       ":dice_#{i}:"
     ).join(' ')
-    res.send """#{result}"""
+    res.send "#{result}"
+    setTimeout(
+      =>
+       res.send "您中了：#{title(numbers)} ！"
+      100
+    )
 
   robot.respond /bb rules$/i, (res) ->
     res.send """名称	个数	说明
