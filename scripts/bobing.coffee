@@ -62,7 +62,7 @@ bobing = (res) ->
   ).join(' ')
   yourTitle = title(numbers)
   if yourTitle != '平民'
-    result += "\n您中了：#{yourTitle} ！"
+    result += "\n恭喜您中了 #{yourTitle} ！"
   res.send result
 
 module.exports = (robot) ->
