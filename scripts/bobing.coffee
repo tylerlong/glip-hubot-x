@@ -60,14 +60,10 @@ bobing = (res) ->
   result = numbers.map((i) =>
     ":dice_#{i}:"
   ).join(' ')
-  res.send "#{result}"
   yourTitle = title(numbers)
   if yourTitle != '平民'
-    setTimeout(
-      =>
-      res.send "您中了：#{yourTitle} ！"
-      256
-    )
+    result += "\n\n您中了：#{yourTitle} ！"
+  res.send result
 
 module.exports = (robot) ->
   robot.respond /bb$/i, bobing
