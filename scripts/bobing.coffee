@@ -62,7 +62,7 @@ bobing = (res) ->
   ).join(' ')
   yourTitle = title(numbers)
   if yourTitle != '平民'
-    result += "\n\n您中了：#{yourTitle} ！"
+    result += "\n您中了：#{yourTitle} ！"
   res.send result
 
 module.exports = (robot) ->
@@ -71,13 +71,14 @@ module.exports = (robot) ->
   robot.hear /博饼/, bobing
 
   robot.respond /bb rules$/i, (res) ->
-    res.send """名称	个数	说明
-状元	1个	有多种不同组合。四个红∷以上或者五个相同的其它数字以上
-榜眼（对堂）	2个	必须每个骰子都不同
-探花（三红）	4个	有三个骰子为红∷
-进士（四进）	8个	骰子有四个相同数字（除∷外）
-举人（二举）	16个	骰子摇中二个红∷即为举人
-秀才（一秀）	32个	有一个红∷"""
+    res.send """中秋博饼游戏规则
+名称	说明
+状元	四个红∷以上或者五个相同的其它数字以上
+榜眼（对堂）	必须每个骰子都不同
+探花（三红）	有三个骰子为红∷
+进士（四进）	骰子有四个相同数字（除∷外）
+举人（二举）	骰子摇中两个红∷即为举人
+秀才（一秀）	有一个红∷"""
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
