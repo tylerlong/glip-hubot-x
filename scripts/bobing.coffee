@@ -2,7 +2,7 @@
 #   中秋博饼
 #
 # Commands:
-#   hubot bb - 中秋博饼: 摇骰子
+#   hubot bb - 中秋博饼: 掷骰子
 #   hubot bb rules - 中秋博饼：规则
 #
 # Notes:
@@ -13,12 +13,10 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 
-getRandomInt = (min, max) =>
-    Math.floor(Math.random() * (max - min + 1)) + min
+getRandomInt = () =>
+    Math.floor(Math.random() * 6) + 1
 
 compare = (a, b) =>
-  if a == b
-    return 0
   if a == 4
     return -1
   if b == 4
@@ -26,8 +24,6 @@ compare = (a, b) =>
   return a > b ? 1 : -1
 
 title = (numbers) =>
-  if numbers.length != 6
-    return '外星人'
   dict = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 }
   for i in numbers
     dict[i] += 1
@@ -36,12 +32,7 @@ title = (numbers) =>
   for i in [1,2,3,5,6]
     if dict[i] >= 5
       return '状元'
-  b = true
-  for i in [1,2,3,4,5,6]
-    if dict[i] != 1
-      b = false
-      break
-  if b
+  if dict[1] == 1 && dict[2] == 1 && dict[3] == 1 && dict[4] == 1 && dict[5] == 1 && dict[6] == 1
     return '榜眼 (对堂)'
   if dict[4] == 3
     return '探花 (三红)'
@@ -55,14 +46,16 @@ title = (numbers) =>
   return '平民'
 
 bobing = (res) ->
-  numbers = [getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6), getRandomInt(1, 6)]
+  numbers = [getRandomInt(), getRandomInt(), getRandomInt(), getRandomInt(), getRandomInt(), getRandomInt()]
   numbers.sort compare
   result = numbers.map((i) =>
     ":dice_#{i}:"
   ).join(' ')
   yourTitle = title(numbers)
-  if yourTitle != '平民'
-    result += "\n恭喜您中了 #{yourTitle} ！"
+  if yourTitle == '平民'
+    result += "\n很遗憾您名落孙山！"
+  else
+    result += "\n恭喜您高中 #{yourTitle} ！"
   res.send result
 
 module.exports = (robot) ->
