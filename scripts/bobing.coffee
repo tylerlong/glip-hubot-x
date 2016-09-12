@@ -1,10 +1,6 @@
 # Description:
 #   中秋博饼
 #
-# Commands:
-#   hubot bb - 中秋博饼: 掷骰子
-#   hubot bb rules - 中秋博饼：规则
-#
 # Notes:
 #   They are commented out by default, because most of them are pretty silly and
 #   wouldn't be useful and amusing enough for day to day huboting.
@@ -60,8 +56,6 @@ bobing = (res) ->
 
 module.exports = (robot) ->
   robot.respond /bb$/i, bobing
-
-  robot.hear /博饼/, bobing
 
   robot.respond /bb rules$/i, (res) ->
     res.send """中秋博饼游戏规则
