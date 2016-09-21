@@ -1,8 +1,8 @@
 # Description:
-#   About X
+#   About X https://github.com/tylerlong/glip-hubot-x
 #
 # Commands:
-#   hubot about - about X
+#   hubot about - about X https://github.com/tylerlong/glip-hubot-x
 
 module.exports = (robot) ->
   robot.respond /about$/i, (res) ->
