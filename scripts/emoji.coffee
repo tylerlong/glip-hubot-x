@@ -8,7 +8,7 @@ emojione = require('emojione')
 emojione.cacheBustParam = ''
 
 module.exports = (robot) ->
-  robot.respond /emoji((?:\s+[a-z_]+)+)\s*$/i, (res) ->
+  robot.respond /emoji((?:\s+[0-9a-z_]+)+)\s*$/i, (res) ->
     emojis = res.match[1].trim().split(/\s+/)
     for emoji in emojis
       image = emojione.shortnameToImage(":#{emoji}:")
