@@ -13,7 +13,7 @@ page.open('index.html', function(status) {
     mdc.init(data, false);
   }, data);
   setTimeout(function(){
-    page.render('static/test_' + count + '.png');
+    page.render('static/md_' + count + '.png');
     phantom.exit();
   }, 1000);
 });
