@@ -1,12 +1,12 @@
 # Description:
-#   About X (厦)
+#   About X
 #
 # Commands:
-#   hubot about - about X (厦)
+#   hubot about - about X
 
 module.exports = (robot) ->
   robot.respond /about$/i, (res) ->
-    res.send """I'm [X (厦)](https://github.com/tylerlong/glip-hubot-x), a Glip bot for RingCentral Xiamen.
+    res.send """I'm [X](https://github.com/tylerlong/glip-hubot-x), a Glip bot for RingCentral Xiamen.
 I'm created and maintained by [Tyler Long](https://github.com/tylerlong).
 I'm built upon [Hubot](https://hubot.github.com/) and hosted by [IBM Bluemix](https://new-console.ng.bluemix.net/)."""
 

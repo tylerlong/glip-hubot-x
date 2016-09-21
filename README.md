@@ -1,6 +1,6 @@
-# X (厦)
+# X
 
-X (厦) is a [Glip](https://glip.com/) [bot](https://hubot.github.com/docs/) for [RingCentral Xiamen](http://www.ringcentral.cn/).
+X is a [Glip](https://glip.com/) [bot](https://hubot.github.com/docs/) for [RingCentral Xiamen](http://www.ringcentral.cn/).
 
 
 ## Run X locally

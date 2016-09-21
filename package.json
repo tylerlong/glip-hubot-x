@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "Tyler Long <tyler4long@gmail.com>",
-  "description": "X (厦) is a Glip bot for RingCentral Xiamen",
+  "description": "X is a Glip bot for RingCentral Xiamen",
   "scripts": {
     "start": "hubot -a glip -n x"
   },
