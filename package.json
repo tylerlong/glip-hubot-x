@@ -19,7 +19,8 @@
     "hubot-redis-brain": "0.0.3",
     "hubot-scripts-stock": "^0.2.1",
     "mathjs": "^3.5.0",
-    "moment-timezone": "^0.5.5"
+    "moment-timezone": "^0.5.5",
+    "phantomjs": "^2.1.7"
   },
   "engines": {
     "node": "6.x"
