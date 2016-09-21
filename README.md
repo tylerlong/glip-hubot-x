@@ -29,3 +29,4 @@ x stock chart <ticker> [1d|5d|2w|1mon|1y] - Get a stock price and chart
 ## todo
 
 - if one-one chat, print help if don't understand user's input. Just like the terminal.
+- support fenced code block
