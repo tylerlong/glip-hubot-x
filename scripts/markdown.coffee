@@ -24,5 +24,5 @@ module.exports = (robot) ->
   robot.hear /^\s*(```[\s\S]+^\s*```)\s*$/m, (res) ->
     process_markdown(robot, res)
 
-  robot.hear /^\s*\[md\]([\s\S]+)\[/md\]\s*$/i, (res) ->
+  robot.hear /^\s*\[md\]([\s\S]+)\[\/md\]\s*$/i, (res) ->
     process_markdown(robot, res)
