@@ -1,13 +1,19 @@
 var page = require('webpage').create();
+var system = require('system');
+
+page.viewportSize = { width: 1024, height: 128 };
+
 page.open('index.html', function(status) {
-  console.log("Status: " + status);
   if(status !== "success") {
-    return
+    return;
   }
-  page.evaluate(function() {
-    var data = '```js\nfunction test() {\n    console.log("hello world");\n}\n```';
+  var data = system.args[1];
+  var count = system.args[2];
+  page.evaluate(function(data) {
     mdc.init(data, false);
-  });
-  page.render('static/test.png');
-  phantom.exit();
+  }, data);
+  setTimeout(function(){
+    page.render('static/test_' + count + '.png');
+    phantom.exit();
+  }, 1000);
 });
