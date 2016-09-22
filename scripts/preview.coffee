@@ -3,7 +3,7 @@
 
 
 urlExpression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi
-imgUrlExpression = /\.(?:png|jpg|jpeg|gif)\b/i
+imgUrlExpression = /\.(?:png|jpg|jpeg|gif)$/i
 
 module.exports = (robot) ->
   robot.hear urlExpression, (res) ->
