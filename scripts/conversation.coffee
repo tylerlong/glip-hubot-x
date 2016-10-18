@@ -27,7 +27,7 @@ module.exports = (robot) ->
     conversation.reset() # reset existing conversation
     conversation.addOption(/^(\d+)$/, res, (res, match) ->
       for i in [0...match[1]]
-        res.send 'jump'
+        res.send 'jumps'
     )
     conversation.startTimer() # conversation expires in 30 seconds
 
