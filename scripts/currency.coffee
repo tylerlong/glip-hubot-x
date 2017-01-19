@@ -15,9 +15,3 @@ module.exports = (robot) ->
       else
         res.send "1 #{source} = #{body.split(',')[1]} #{target}"
     )
-
-  robot.respond /stock .+$/i, (res) ->
-    request("http://finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1d1t1&s=USDCNY=X", (error, response, body) ->
-      unless error
-        res.send "1 USD = #{body.split(',')[1]} CNY"
-    )
