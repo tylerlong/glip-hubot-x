@@ -9,22 +9,25 @@
     "start": "hubot -a glip -n x"
   },
   "dependencies": {
-    "coffee-script": "^1.10.0",
-    "cron": "^1.1.0",
+    "coffee-script": "^1.12.3",
+    "cron": "^1.2.1",
     "cron-converter": "0.0.11",
-    "emojione": "^2.2.6",
+    "emojione": "^2.2.7",
     "hubot": "^2.19.0",
-    "hubot-glip": "^0.4.0",
+    "hubot-glip": "^0.8.6",
     "hubot-help": "^0.2.0",
     "hubot-maps": "0.0.2",
     "hubot-redis-brain": "0.0.3",
     "hubot-scripts-stock": "^0.2.1",
-    "mathjs": "^3.5.0",
-    "moment-timezone": "^0.5.5",
+    "mathjs": "^3.9.0",
+    "moment-timezone": "^0.5.11",
     "phantomjs": "^2.1.7",
     "request": "^2.79.0"
   },
   "engines": {
     "node": "6.x"
+  },
+  "devDependencies": {
+    "npm-check-updates": "^2.10.0"
   }
 }
