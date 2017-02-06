@@ -21,7 +21,7 @@
     "hubot-scripts-stock": "^0.2.1",
     "mathjs": "^3.9.0",
     "moment-timezone": "^0.5.11",
-    "phantomjs": "^2.1.7",
+    "phantomjs-prebuilt": "^2.1.14",
     "request": "^2.79.0"
   },
   "engines": {
