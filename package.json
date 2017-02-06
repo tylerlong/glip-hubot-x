@@ -5,6 +5,7 @@
   "author": "Tyler Long <tyler4long@gmail.com>",
   "description": "X is a Glip bot for RingCentral Xiamen",
   "scripts": {
+    "upgrade": "ncu -ua && yarn upgrade",
     "start": "hubot -a glip -n x"
   },
   "dependencies": {
