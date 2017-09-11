@@ -20,6 +20,10 @@
     "hubot-redis-brain": "0.0.4",
     "mathjs": "^3.16.3",
     "moment-timezone": "^0.5.13",
+    "ramda": "^0.24.1",
     "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
   }
 }
