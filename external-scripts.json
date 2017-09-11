@@ -1,6 +1,5 @@
 [
   "hubot-help",
   "hubot-maps",
-  "hubot-scripts-stock",
   "hubot-redis-brain"
 ]

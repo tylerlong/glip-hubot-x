@@ -556,7 +556,7 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-"glip.socket.io@github:tylerlong/glip.socket.io":
+glip.socket.io@tylerlong/glip.socket.io:
   version "0.2.3"
   resolved "https://codeload.github.com/tylerlong/glip.socket.io/tar.gz/7a0de3575132fc5b51e60c10eb6465113e82f1b0"
   dependencies:
@@ -627,9 +627,9 @@ hubot-glip@0.9.0:
     glip.socket.io tylerlong/glip.socket.io
     parent-require "^1.0.0"
 
-hubot-help@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/hubot-help/-/hubot-help-0.2.2.tgz#cea17e782ce776b743f65393935b3430c2e8197c"
+hubot-help@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/hubot-help/-/hubot-help-0.2.0.tgz#375b0fd7a1eafb2a71cf2e548bcb226bf7e66642"
 
 hubot-maps@0.0.3:
   version "0.0.3"
@@ -641,13 +641,9 @@ hubot-redis-brain@0.0.4:
   dependencies:
     redis "~2.6.x"
 
-hubot-scripts-stock@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/hubot-scripts-stock/-/hubot-scripts-stock-0.2.1.tgz#eeae0b28afeb5422030286d9e7f999e84ddc7387"
-
-hubot@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/hubot/-/hubot-3.0.1.tgz#fe1bca4ece9c4f88f172047d63945b78d3623759"
+hubot@^2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/hubot/-/hubot-2.19.0.tgz#87c572d210fb0d5f89f756177ae0020d49ffba36"
   dependencies:
     async ">=0.1.0 <1.0.0"
     chalk "^1.0.0"
