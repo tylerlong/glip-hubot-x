@@ -16,6 +16,6 @@ module.exports = (robot) ->
         res.send "no emoji for \"#{emoji}\""
         return
       code = image.match(/\/assets\/png\/([a-f0-9-]+)\.png/)[1]
-      url = "https://cdn.rawgit.com/Ranks/emojione/master/assets/png_128x128/#{code}.png"
+      url = "https://unpkg.com/emojione@2.2.7/assets/png_128x128/#{code}.png"
       envelope = { user: res.message.user, message_type: 'image_url' }
       robot.send envelope, url
