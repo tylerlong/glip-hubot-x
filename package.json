@@ -5,7 +5,7 @@
   "author": "Tyler Long <tyler4long@gmail.com>",
   "description": "X is a Glip bot for RingCentral Xiamen",
   "scripts": {
-    "upgrade": "yarn upgrade --latest && yarn remove hubot-glip emojione && yarn add hubot-glip@0.9.0 emojione@2.2.7",
+    "upgrade": "yarn upgrade --latest && yarn remove hubot hubot-glip emojione && yarn add hubot-glip@0.9.0 emojione@2.2.7 hubot@next",
     "start": "hubot -a glip -n x"
   },
   "dependencies": {
@@ -13,7 +13,7 @@
     "cron": "^1.2.1",
     "cron-converter": "0.0.11",
     "emojione": "2.2.7",
-    "hubot": "^2.19.0",
+    "hubot": "^3.0.1",
     "hubot-glip": "0.9.0",
     "hubot-help": "^0.2.2",
     "hubot-maps": "0.0.3",
@@ -21,7 +21,6 @@
     "hubot-scripts-stock": "^0.2.1",
     "mathjs": "^3.16.3",
     "moment-timezone": "^0.5.13",
-    "phantomjs-prebuilt": "^2.1.15",
     "request": "^2.81.0"
   }
 }
