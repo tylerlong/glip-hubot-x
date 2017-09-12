@@ -12,7 +12,7 @@ module.exports = robot => {
       }
       const json = JSON.parse(body)
       let quote = json.query.results.quote
-      res.send(`${quote.Name.replace(/ Class [A-Z]$/, '')}: ${quote.LastTradePriceOnly} (${quote.Change}) https://finance.yahoo.com/quote/${quote.symbol}`)
+      res.send(`${quote.Name.replace(/ Class [A-Z]$/, '')} ${quote.LastTradePriceOnly} (${quote.Change}) https://finance.yahoo.com/quote/${quote.symbol}`)
     })
   })
 }
