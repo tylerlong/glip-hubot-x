@@ -1,7 +1,6 @@
 // Commands:
 //   hubot stock <ticker> - Get a stock price
 const request = require('request')
-const R = require('ramda')
 
 module.exports = robot => {
   robot.respond(/stock (.+?)$/, res => {
@@ -13,10 +12,7 @@ module.exports = robot => {
       }
       const json = JSON.parse(body)
       let quote = json.query.results.quote
-      quote = R.pick(['symbol', 'Change', 'PercentChange', 'LastTradeDate', 'DaysRange', 'LastTradePriceOnly'], quote)
-      quote.LastTradePrice = quote.LastTradePriceOnly
-      delete quote.LastTradePriceOnly
-      res.send(JSON.stringify(quote, null, 4))
+      res.send(`${quote.Name}: ${quote.LastTradePriceOnly} (${quote.Change}) https://finance.yahoo.com/quote/${quote.symbol}`)
     })
   })
 }
