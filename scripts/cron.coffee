@@ -74,7 +74,7 @@ module.exports = (robot) ->
   robot.respond /time$/i, (msg) ->
     msg.send "Server time is: #{moment().tz("Asia/Shanghai").format()} (Asia/Shanghai timezone)"
 
-  robot.respond /cron (?:add|new) (.+?) say (.+?)$/i, (msg) ->
+  robot.respond /cron (?:add|new) (.+?) say ([\s\S]+?)$/i, (msg) ->
     try
       pattern = cronConverter.fromString(msg.match[1]).toString()
       handleNewJob robot, msg, pattern, msg.match[2]
