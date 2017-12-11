@@ -5,14 +5,20 @@ const request = require('request')
 module.exports = robot => {
   robot.respond(/stock (.+?)$/, res => {
     const symbol = res.match[1].toUpperCase()
-    request(`https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22${symbol}%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`, (error, response, body) => {
+    request(`https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?api_key=hWMcYrZQW1uL-G5C6Grn&start_date=2017-11-01`, (error, response, body) => {
       if (error !== null) {
         res.send(`Failed to fetch quote for ${symbol}`)
         return
       }
       const json = JSON.parse(body)
-      let quote = json.query.results.quote
-      res.send(`${quote.Name.replace(/ Class [A-Z]$/, '')} ${quote.LastTradePriceOnly} (${quote.Change}) https://finance.yahoo.com/quote/${quote.symbol}`)
+      if (json.quandl_error) {
+        res.send(json.quandl_error.message)
+        return
+      }
+      const name = json.dataset.name.split(' Prices, ')[0]
+      let result = json.dataset.data.slice(0, 10).map(date => `${date[0]}: $${date[4]}`).join('\n')
+      result = `${name}\n${result}`
+      res.send(result)
     })
   })
 }
