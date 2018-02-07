@@ -5,7 +5,7 @@ const request = require('request')
 module.exports = robot => {
   robot.respond(/stock (.+?)$/, res => {
     const symbol = res.match[1].toUpperCase()
-    request(`https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?api_key=hWMcYrZQW1uL-G5C6Grn&start_date=2017-11-01`, (error, response, body) => {
+    request(`https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?api_key=hWMcYrZQW1uL-G5C6Grn&start_date=2018-02-01`, (error, response, body) => {
       if (error !== null) {
         res.send(`Failed to fetch quote for ${symbol}`)
         return
@@ -16,8 +16,8 @@ module.exports = robot => {
         return
       }
       const name = json.dataset.name.split(' Prices, ')[0]
-      let result = json.dataset.data.slice(0, 10).map(date => `${date[0]}: $${date[4]}`).join('\n')
-      result = `${name}\n${result}`
+      let result = json.dataset.data.slice(0, 1).map(date => `${date[0]}: **$${date[4]}**`).join('\n')
+      result = `${name} ${result}`
       res.send(result)
     })
   })
