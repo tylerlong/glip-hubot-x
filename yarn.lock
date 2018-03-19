@@ -1057,7 +1057,7 @@ getpass@^0.1.1:
 
 "glip.socket.io@github:tylerlong/glip.socket.io":
   version "0.3.0"
-  resolved "https://codeload.github.com/tylerlong/glip.socket.io/tar.gz/2b628a17295d538de0b46f4405fd4133ae5ab35e"
+  resolved "https://codeload.github.com/tylerlong/glip.socket.io/tar.gz/ce8d25b10ffd24858a111849da168734ee0dfe81"
   dependencies:
     async "^2.6.0"
     fast_bindall "^0.0.1"
