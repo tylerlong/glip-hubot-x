@@ -19,6 +19,7 @@
     "hubot-maps": "^0.0.3",
     "hubot-redis-brain": "^0.0.4",
     "mathjs": "^4.0.1",
+    "moment": "^2.22.1",
     "moment-timezone": "^0.5.14",
     "request": "^2.85.0"
   },
